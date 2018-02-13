@@ -1,0 +1,30 @@
+<launch>
+
+    <arg name="dir" default="/" />
+    <arg name="load_labelled" default="false" />
+    <arg name="debug" default="true" />
+
+    <param name="dir" value="$(arg dir)"/>
+    <param name="load_labelled" value="$(arg load_labelled)"/>
+    <param name="debug" value="$(arg debug)"/>
+
+    <rosparam file="$(find rp_semantic)/config/params_config.yaml" command="load"/>
+
+    <group unless="$(arg load_labelled)">
+        <group if="$(arg debug)">
+            <node name="semantic_segmentation" pkg="rp_semantic" type="semantic_segmentation.py" output="screen"/>
+        </group>
+
+        <group unless="$(arg debug)">
+            <node name="semantic_segmentation" pkg="rp_semantic" type="semantic_segmentation.py"/>
+        </group>
+    </group>
+
+
+    <node name="fusion_node" pkg="rp_semantic" type="fusion_node" output="screen"/>
+    <node name="cluster_visualization" pkg="rp_semantic" type="cluster_visualization.py" output="screen" />
+
+    <node name="clusters_node" pkg="rp_semantic" type="clusters_node" output="screen"/>
+
+    <node name="descriptor_storage_node" pkg="rp_semantic" type="descriptor_storage_node.py" output="screen"/>
+</launch>

@@ -1,0 +1,8 @@
+<launch>
+    <rosparam file="$(find graph_semantic)/config/params_config.yaml" command="load"/>
+
+    <!--node name="semantic_segmentation" pkg="graph_semantic" type="semantic_segmentation.py"/-->
+    <node name="semantic_proj_node" pkg="graph_semantic" type="semantic_proj_node" output="screen"/>
+    <!--node name="semantic_cluster_node" pkg="graph_semantic" type="semantic_cluster_node" output="screen"/-->
+    <!-- node name="rviz" pkg="rviz" type="rviz"/-->
+</launch>

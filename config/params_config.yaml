@@ -1,0 +1,45 @@
+## YAML FILE for package "graph_semantic".
+
+#------------------------------------------------
+# Computer dependent parameters
+#------------------------------------------------
+
+# Caffe configuration
+graph_semantic/caffe_root_path: '/home/alpha/github/caffe-segnet-cudnn5/'
+graph_semantic/caffe_model_path: '/home/alpha/catkin_ws/src/segnet_program/src/'
+
+# Descriptor storage parameters
+graph_semantic/descriptor_file: '/home/albert/Desktop/semantic_data/descriptors_dummy.txt'
+
+#------------------------------------------------
+# Debugging
+#------------------------------------------------
+
+graph_semantic/publish_rgb_frame: true
+graph_semantic/publish_rgb_labels: true
+
+graph_semantic/publish_cluster_markers: true # TODO fix visualization message
+
+#------------------------------------------------
+# Algorithm parameters
+#------------------------------------------------
+load_existing: false
+regularize_frame: true
+reg_iteration: 2
+
+graph_semantic/num_labels: 18
+
+# Reshape size for net output to match with camera intrinsics matrix
+graph_semantic/sensor_image_height: 480
+graph_semantic/sensor_image_width: 640
+
+# Cluster parameters
+graph_semantic/clusters_node/cluster_tolerance : 0.03 # in cm.
+graph_semantic/clusters_node/min_cluster_size : 500
+graph_semantic/clusters_node/max_cluster_size : 75000 # 50000
+
+# Matching parameters
+graph_semantic/BOWP_matching/dist_exponent : 3.0
+
+
+
